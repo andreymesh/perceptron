@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build && webpack --config webpack.production.js --progress",
-    "start": "node webpack.server.js"
+    "start": "node webpack.server.js",
+    "gulp": "gulp default"
   },
   "author": "",
   "license": "ISC",

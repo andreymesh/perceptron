@@ -71,15 +71,15 @@
           else {
             return 0
           }
-        })
+        });
 
         this.cells = transformedImageDataArray
       },
 
       getActivationFunction () {
-        let sum = 0
+        let sum = 0;
 
-        sum += this.weights[0]
+        sum += this.weights[0];
 
         for (let index = 1; index < this.canvasSize * this.canvasSize + 1; index++) {
           sum += this.cells[index - 1] * this.weights[index]
@@ -89,16 +89,16 @@
       },
 
       learn () {
-        this.getCells()
-        this.realResult = confirm('Select either OK for 0 or CANCEL for 1') ? 0 : 1 // eslint-disable-line no-alert
+        this.getCells();
+        this.realResult = confirm('Select either OK for 4 or CANCEL for 6') ? 0 : 1; // eslint-disable-line no-alert
         this.evalWeights(this.realResult)
       },
 
       evalWeights (realResult) {
-        const deltaError = realResult - this.computedResult
+        const deltaError = realResult - this.computedResult;
 
         if (deltaError !== 0) {
-          this.weights[0] = this.weights[0] + this.learningRate * deltaError
+          this.weights[0] = this.weights[0] + this.learningRate * deltaError;
 
           for (let index = 1; index < this.canvasSize * this.canvasSize + 1; index++) {
             this.weights[index] = this.weights[index] + this.learningRate * deltaError * this.cells[index - 1]
@@ -107,17 +107,17 @@
       },
 
       recognizeImage () {
-        this.getCells()
-        this.computedResult = this.getActivationFunction()
+        this.getCells();
+        this.computedResult = this.getActivationFunction();
 
-        const resultingValue = this.computedResult === 0 ? 0 : 1
+        const resultingValue = this.computedResult === 0 ? 4 : 6;
 
         alert(resultingValue) // eslint-disable-line no-alert
       },
 
       startDrawing (event) {
-        this.isDrawing = true
-        this.canvasContext.beginPath()
+        this.isDrawing = true;
+        this.canvasContext.beginPath();
         this.canvasContext.moveTo(
           event.pageX - this.canvas.offsetLeft,
           event.pageY - this.canvas.offsetTop
